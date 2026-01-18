@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <circle cx="50" cy="50" r="48" fill="#6c5ce7"/>
+  <!-- White Keys -->
+  <rect x="25" y="25" width="15" height="50" rx="2" fill="white"/>
+  <rect x="42.5" y="25" width="15" height="50" rx="2" fill="white"/>
+  <rect x="60" y="25" width="15" height="50" rx="2" fill="white"/>
+  <!-- Black Keys -->
+  <rect x="36" y="25" width="10" height="30" rx="1" fill="#2d3436"/>
+  <rect x="54" y="25" width="10" height="30" rx="1" fill="#2d3436"/>
+</svg>

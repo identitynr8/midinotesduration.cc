@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MIDI Notes Duration Visualizer</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css">
+    <style>
+        :root {
+            --pico-font-size: 14px;
+        }
+        body {
+            padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        #histogram-container {
+            height: 400px;
+            margin-bottom: 2rem;
+            background: var(--pico-card-background-color);
+            border-radius: var(--pico-border-radius);
+            padding: 1rem;
+            box-shadow: var(--pico-card-box-shadow);
+        }
+        .status-badge {
+            display: inline-block;
+            padding: 0.2rem 0.5rem;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            margin-bottom: 1rem;
+        }
+        .status-connected { background: #2e7d32; color: white; }
+        .status-disconnected { background: #c62828; color: white; }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/webmidi@latest/dist/iife/webmidi.iife.js"></script>
+    <script src="https://cdn.plot.ly/plotly-3.3.1.min.js" charset="utf-8"></script>
+    <script type="module" src="./app.js"></script>
+</head>
+<body>
+    <header>
+        <hgroup>
+            <h1>Notes Duration</h1>
+            <p>Real-time visualizer of notes duration from your MIDI controller</p>
+        </hgroup>
+    </header>
+
+    <main>
+        <div id="status-area">
+            <div class="grid">
+                <div>
+                    <span id="connection-status" class="status-badge status-disconnected">Disconnected</span>
+                </div>
+                <div>
+                    <select id="device-selector" aria-label="Select MIDI Input">
+                        <option value="" disabled selected>Select Device</option>
+                    </select>
+                </div>
+                <div>
+                    <select id="channel-selector" aria-label="Select MIDI Channel">
+                        <option value="all">All Channels</option>
+                        <option value="1">Channel 1</option>
+                        <option value="2">Channel 2</option>
+                        <option value="3">Channel 3</option>
+                        <option value="4">Channel 4</option>
+                        <option value="5">Channel 5</option>
+                        <option value="6">Channel 6</option>
+                        <option value="7">Channel 7</option>
+                        <option value="8">Channel 8</option>
+                        <option value="9">Channel 9</option>
+                        <option value="10">Channel 10</option>
+                        <option value="11">Channel 11</option>
+                        <option value="12">Channel 12</option>
+                        <option value="13">Channel 13</option>
+                        <option value="14">Channel 14</option>
+                        <option value="15">Channel 15</option>
+                        <option value="16">Channel 16</option>
+                    </select>
+                </div>
+                <div>
+                    <select id="limit-selector" aria-label="Notes to keep">
+                        <option value="1000" selected>Last 1000 notes</option>
+                        <option value="10000">Last 10,000 notes</option>
+                        <option value="500">Last 500 notes</option>
+                        <option value="100">Last 100 notes</option>
+                    </select>
+                </div>
+            </div>
+            <div id="device-list" style="display: none;">Scanning for devices...</div>
+        </div>
+
+        <article id="histogram-container">
+            <div id="histogram-plot" style="width: 100%; height: 100%;"></div>
+        </article>
+    </main>
+
+    <footer>
+        <small>Powered by WebMidi.js and Plotly.js</small>
+    </footer>
+</body>
+</html>
