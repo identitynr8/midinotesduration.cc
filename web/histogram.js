@@ -10,9 +10,20 @@ export function drawHistogram(element, data) {
     nbinsx: 200
   };
 
+  const latestValue = {
+    x: [data[data.length - 1]],
+    type: 'histogram',
+    marker: {
+      color: '#4caf6b',
+    },
+    nbinsx: 200
+  };
+
   const layout = {
     xaxis: {title: {text: 'Duration (ms)'}},
     yaxis: {title: {text: '# Notes'}},
+    showlegend: false,
+    barmode: 'overlay'
   };
 
   const config = {
@@ -20,5 +31,5 @@ export function drawHistogram(element, data) {
     staticPlot: true,
   };
 
-  Plotly.newPlot(element, [trace], layout, config);
+  Plotly.newPlot(element, [trace, latestValue], layout, config);
 }
