@@ -11,16 +11,13 @@ export function drawHistogram(element, data) {
   };
 
   const layout = {
-    xaxis: {
-      title: 'Duration (ms)',
-      automargin: true
-    },
-    responsive: true
+    xaxis: {title: {text: 'Duration (ms)'}},
+    yaxis: {title: {text: '# Notes'}},
   };
 
   const config = {
-    responsive: true,
-    displayModeBar: false
+    editable: false,
+    staticPlot: true,
   };
 
   Plotly.newPlot(element, [trace], layout, config);
