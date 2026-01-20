@@ -3,7 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MIDI Notes Duration Visualizer</title>
+    <title>MIDI Note Duration Visualizer</title>
+    <meta name="description" content="MIDI note duration visualizer. Connect your MIDI controller and analyze your playing consistency with interactive histograms.">
+    <meta name="keywords" content="MIDI, music, duration, visualizer, histogram, real-time, piano, controller">
+    <link rel="canonical" href="https://midinotesduration.cc/">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://midinotesduration.cc/">
+    <meta property="og:title" content="MIDI Note Duration Visualizer">
+    <meta property="og:description" content="Connect your MIDI controller and visualize note durations in real-time. Improve your playing consistency with instant feedback.">
+    <meta property="og:image" content="https://midinotesduration.cc/favicon.svg">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://midinotesduration.cc/">
+    <meta property="twitter:title" content="MIDI Note Duration Visualizer">
+    <meta property="twitter:description" content="Connect your MIDI controller and visualize note durations in real-time. Improve your playing consistency with instant feedback.">
+    <meta property="twitter:image" content="https://midinotesduration.cc/favicon.svg">
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css">
     <style>
@@ -36,16 +53,31 @@
     <script src="https://cdn.jsdelivr.net/npm/webmidi@latest/dist/iife/webmidi.iife.js"></script>
     <script src="https://cdn.plot.ly/plotly-3.3.1.min.js" charset="utf-8"></script>
     <script type="module" src="./app.js"></script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "MIDI Note Duration Visualizer",
+      "description": "Real-time visualizer of notes duration from your MIDI controller.",
+      "url": "https://midinotesduration.cc/",
+      "applicationCategory": "MultimediaApplication",
+      "operatingSystem": "Any",
+      "offers": {
+        "@type": "Offer",
+        "price": "0"
+      }
+    }
+    </script>
 </head>
 <body>
-    <header>
+    <header class="container">
         <hgroup>
             <h1>Notes Duration</h1>
             <p>Real-time visualizer of notes duration from your MIDI controller</p>
         </hgroup>
     </header>
 
-    <main>
+    <main class="container">
         <div id="status-area">
             <div class="grid">
                 <div>
@@ -94,8 +126,9 @@
         </article>
     </main>
 
-    <footer>
-        <small>Powered by WebMidi.js and Plotly.js</small>
+    <footer class="container">
+        <hr>
+        <p><small>Powered by <a href="https://webmidijs.org/" target="_blank" rel="noopener">WebMidi.js</a> and <a href="https://plotly.com/javascript/" target="_blank" rel="noopener">Plotly.js</a></small></p>
     </footer>
 </body>
 </html>

@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://midinotesduration.cc/sitemap.xml
