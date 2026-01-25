@@ -18,8 +18,7 @@ WebMidi
   .enable()
   .then(onEnabled)
   .catch(err => {
-    alert(err);
-    statusBadge.innerText = "Error";
+    statusBadge.innerText = err;
   });
 
 function onEnabled() {
