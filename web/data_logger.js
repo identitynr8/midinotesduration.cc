@@ -37,6 +37,11 @@ export class MidiDataLogger {
     }
   }
 
+  clear() {
+    this.data = [];
+    this.pressedNotes.clear();
+  }
+
   /**
    * Returns the list of recorded pairs.
    * @returns {Array<{value: number, timestamp: number}>}

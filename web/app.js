@@ -7,6 +7,7 @@ const statusBadge = document.getElementById("connection-status");
 const deviceSelector = document.getElementById("device-selector");
 const channelSelector = document.getElementById("channel-selector");
 const limitSelector = document.getElementById("limit-selector");
+const clearButton = document.getElementById("clear-button");
 
 let currentInput = null;
 
@@ -38,6 +39,11 @@ function onEnabled() {
 
   limitSelector.addEventListener("change", () => {
     logger.setLimit(limitSelector.value);
+    drawHistogram(plotElement, logger.getAll());
+  });
+
+  clearButton.addEventListener("click", () => {
+    logger.clear();
     drawHistogram(plotElement, logger.getAll());
   });
 }

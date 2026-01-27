@@ -1,5 +1,8 @@
 export function drawHistogram(element, data) {
-  if (!element || !data || data.length === 0) return;
+  if (!data || data.length === 0) {
+    Plotly.purge(element);
+    return;
+  }
 
   const trace = {
     x: data,
