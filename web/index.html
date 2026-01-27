@@ -89,33 +89,42 @@
                     </select>
                 </div>
                 <div>
-                    <select id="channel-selector" aria-label="Select MIDI Channel">
-                        <option value="all">All Channels</option>
-                        <option value="1">Channel 1</option>
-                        <option value="2">Channel 2</option>
-                        <option value="3">Channel 3</option>
-                        <option value="4">Channel 4</option>
-                        <option value="5">Channel 5</option>
-                        <option value="6">Channel 6</option>
-                        <option value="7">Channel 7</option>
-                        <option value="8">Channel 8</option>
-                        <option value="9">Channel 9</option>
-                        <option value="10">Channel 10</option>
-                        <option value="11">Channel 11</option>
-                        <option value="12">Channel 12</option>
-                        <option value="13">Channel 13</option>
-                        <option value="14">Channel 14</option>
-                        <option value="15">Channel 15</option>
-                        <option value="16">Channel 16</option>
-                    </select>
-                </div>
-                <div>
-                    <select id="limit-selector" aria-label="Notes to keep">
-                        <option value="1000" selected>Last 1000 notes</option>
-                        <option value="10000">Last 10,000 notes</option>
-                        <option value="500">Last 500 notes</option>
-                        <option value="100">Last 100 notes</option>
-                    </select>
+                    <details class="dropdown">
+                        <summary>Settings</summary>
+                        <ul dir="rtl">
+                            <li>
+                                <label for="limit-selector" style="display: block;">Notes to keep</label>
+                                <select id="limit-selector" aria-label="Notes to keep">
+                                    <option value="1000" selected>Last 1000 notes</option>
+                                    <option value="10000">Last 10,000 notes</option>
+                                    <option value="500">Last 500 notes</option>
+                                    <option value="100">Last 100 notes</option>
+                                </select>
+                            </li>
+                            <li>
+                                <label for="channel-selector" style="display: block;">MIDI channel</label>
+                                <select id="channel-selector" aria-label="Select MIDI Channel">
+                                    <option value="all">All Channels</option>
+                                    <option value="1">Channel 1</option>
+                                    <option value="2">Channel 2</option>
+                                    <option value="3">Channel 3</option>
+                                    <option value="4">Channel 4</option>
+                                    <option value="5">Channel 5</option>
+                                    <option value="6">Channel 6</option>
+                                    <option value="7">Channel 7</option>
+                                    <option value="8">Channel 8</option>
+                                    <option value="9">Channel 9</option>
+                                    <option value="10">Channel 10</option>
+                                    <option value="11">Channel 11</option>
+                                    <option value="12">Channel 12</option>
+                                    <option value="13">Channel 13</option>
+                                    <option value="14">Channel 14</option>
+                                    <option value="15">Channel 15</option>
+                                    <option value="16">Channel 16</option>
+                                </select>
+                            </li>
+                        </ul>
+                    </details>
                 </div>
             </div>
             <div id="device-list" style="display: none;">Scanning for devices...</div>
