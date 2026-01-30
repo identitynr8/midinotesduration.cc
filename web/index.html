@@ -33,12 +33,32 @@
             margin: 0 auto;
         }
         #histogram-container {
+            position: relative;
             height: 400px;
             margin-bottom: 2rem;
             background: var(--pico-card-background-color);
             border-radius: var(--pico-border-radius);
             padding: 1rem;
             box-shadow: var(--pico-card-box-shadow);
+        }
+        #histogram-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(0, 0, 0, 0.05);
+            border-radius: var(--pico-border-radius);
+            pointer-events: none;
+            z-index: 10;
+        }
+        #histogram-overlay span {
+            font-size: 1.2rem;
+            color: var(--pico-muted-color);
+            text-align: center;
         }
         .status-badge {
             display: inline-block;
@@ -143,6 +163,14 @@
         </div>
 
         <article id="histogram-container">
+            <div id="histogram-overlay">
+                <ul>
+                    <li>The page builds a notes duration histogram in real time when you play on connected MIDI device.</li>
+                    <li>You can use this tool when you want to analyze your playing style from a technical perspective: steady rhythm (histogram should not move as a whole to left or right), notes of different values
+                        having different durations (distinguishable and narrow histogram peaks corresponding to specific note values), etc.</li>
+                    <li>Intended to work with technical exercises rather than musical pieces.</li>
+                </ul>
+            </div>
             <div id="histogram-plot" style="width: 100%; height: 100%;"></div>
         </article>
     </main>
@@ -153,6 +181,7 @@
             <small>
                 Powered by <a href="https://webmidijs.org/" target="_blank" rel="noopener">WebMidi.js</a> and <a href="https://plotly.com/javascript/" target="_blank" rel="noopener">Plotly.js</a>.
                 Source code available on <a href="https://github.com/identitynr8/midinotesduration.cc" target="_blank" rel="noopener">GitHub</a>.
+                Works in your browser, no data collected.
             </small>
         </p>
     </footer>

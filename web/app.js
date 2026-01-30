@@ -3,6 +3,7 @@ import { drawHistogram } from "./histogram.js";
 
 const logger = new MidiDataLogger();
 const plotElement = document.getElementById("histogram-plot");
+const overlayElement = document.getElementById("histogram-overlay");
 const statusBadge = document.getElementById("connection-status");
 const deviceSelector = document.getElementById("device-selector");
 const channelSelector = document.getElementById("channel-selector");
@@ -24,6 +25,12 @@ WebMidi
     statusBadge.innerText = err;
   });
 
+function updateHistogram() {
+  const data = logger.getAll();
+  overlayElement.style.display = data.length > 0 ? "none" : "flex";
+  drawHistogram(plotElement, data);
+}
+
 function onEnabled() {
   updateDeviceList();
 
@@ -41,17 +48,17 @@ function onEnabled() {
 
   limitSelector.addEventListener("change", () => {
     logger.setLimit(limitSelector.value);
-    drawHistogram(plotElement, logger.getAll());
+    updateHistogram();
   });
 
   limitDurationsSelector.addEventListener("change", () => {
     logger.setMaxStd(limitDurationsSelector.value);
-    drawHistogram(plotElement, logger.getAll());
+    updateHistogram();
   });
 
   clearButton.addEventListener("click", () => {
     logger.clear();
-    drawHistogram(plotElement, logger.getAll());
+    updateHistogram();
   });
 }
 
@@ -108,6 +115,6 @@ function setupListeners() {
 
   target.addListener("noteoff", e => {
     logger.noteOff(e.note.identifier);
-    drawHistogram(plotElement, logger.getAll());
+    updateHistogram();
   });
 }
