@@ -2,12 +2,17 @@ export class MidiDataLogger {
   constructor() {
     this.data = [];
     this.pressedNotes = new Map();
-    this.limit = 100;
+    this.maxNumNotes = 100;
+    this.maxStd = 6;
   }
 
   setLimit(limit) {
-    this.limit = parseInt(limit, 10);
+    this.maxNumNotes = parseInt(limit, 10);
     this._enforceLimit();
+  }
+
+  setMaxStd(limit) {
+    this.maxStd = parseInt(limit, 10);
   }
 
   noteOn(note) {
@@ -32,8 +37,8 @@ export class MidiDataLogger {
   }
 
   _enforceLimit() {
-    if (this.data.length > this.limit) {
-      this.data = this.data.slice(-this.limit);
+    if (this.data.length > this.maxNumNotes) {
+      this.data = this.data.slice(-this.maxNumNotes);
     }
   }
 
@@ -42,11 +47,18 @@ export class MidiDataLogger {
     this.pressedNotes.clear();
   }
 
-  /**
-   * Returns the list of recorded pairs.
-   * @returns {Array<{value: number, timestamp: number}>}
-   */
   getAll() {
-    return this.data;
+    if (this.data.length === 0) return [];
+    if (this.maxStd === 99999) return this.data;
+
+    const n = this.data.length;
+    const mean = this.data.reduce((a, b) => a + b) / n;
+    const stdDev = Math.sqrt(this.data.map(x => Math.pow(x - mean, 2)).reduce((a, b) => a + b) / n);
+
+    if (stdDev === 0) return this.data;
+
+    const threshold = this.maxStd * stdDev + mean;
+
+    return this.data.filter(x => x <= threshold);
   }
 }

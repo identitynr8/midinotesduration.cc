@@ -7,12 +7,14 @@ const statusBadge = document.getElementById("connection-status");
 const deviceSelector = document.getElementById("device-selector");
 const channelSelector = document.getElementById("channel-selector");
 const limitSelector = document.getElementById("limit-selector");
+const limitDurationsSelector = document.getElementById("limit-durations-selector");
 const clearButton = document.getElementById("clear-button");
 
 let currentInput = null;
 
-// Initialize logger with default limit
+// Initialize logger with default values
 logger.setLimit(limitSelector.value);
+logger.setMaxStd(limitDurationsSelector.value);
 
 // Enable WebMidi.js and trigger the onEnabled() function when ready.
 WebMidi
@@ -39,6 +41,11 @@ function onEnabled() {
 
   limitSelector.addEventListener("change", () => {
     logger.setLimit(limitSelector.value);
+    drawHistogram(plotElement, logger.getAll());
+  });
+
+  limitDurationsSelector.addEventListener("change", () => {
+    logger.setMaxStd(limitDurationsSelector.value);
     drawHistogram(plotElement, logger.getAll());
   });
 
